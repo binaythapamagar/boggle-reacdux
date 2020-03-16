@@ -17,7 +17,7 @@ import store from './js/store/index';
 import App from "./App";
 
 import { render } from 'react-dom';
-
+window.store = store;
 render(
   <Provider store={store}>
     <App />

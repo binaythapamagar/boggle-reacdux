@@ -3,7 +3,7 @@ const CELL_SELECTED = 'CELL_SELECTED';
 const WORD_SUBMIT = 'WORD_SUBMIT';
 
 export {
-     START_GAME,
+    START_GAME,
     CELL_SELECTED,
     WORD_SUBMIT
 }
