@@ -12,8 +12,7 @@ body {
 
 #board {
   background-color: #93e4b7;
-  padding: 10px;
-  margin: 20px;
+  padding: 25px; 
 }
 .row {
   display: flex;

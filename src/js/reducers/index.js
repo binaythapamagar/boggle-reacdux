@@ -1,5 +1,5 @@
-import { CELL_SELECTED } from "../constants";
-
+import { CELL_SELECTED,WORD_SUBMIT } from "../constants";
+import axios from 'axios';
 const intialState = {
     boardCharacter : [
                             ['A','S','A','P'],
@@ -13,6 +13,7 @@ const intialState = {
     currentCell : null,
     selectedCell : [],
     currentNeighbourCell : [],
+    message : undefined,
     timeLimit : 180
 }
 
@@ -48,6 +49,26 @@ function rootReducer (state = intialState , action){
                 selectedCell : state.selectedCell.concat(action.payload.id)
             });
         }
+    }
+    if(action.type === WORD_SUBMIT){ 
+        if(action.payload.isValid){
+             return Object.assign( {}, state, {
+                currentWord: '',
+                currentNeighbourCell : [],
+                currentCell : null,
+                selectedCell : [],
+                message :action.payload.message,
+                scoredWords : [...state.scoredWords,action.payload.currentWord]
+            });
+        }else{
+            return Object.assign( {}, state, {
+                currentWord: '',
+                currentNeighbourCell : [],
+                currentCell : null,
+                message :action.payload.message,
+                selectedCell : []
+            });
+        } 
     }
     return state;
 }

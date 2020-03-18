@@ -1,5 +1,5 @@
 import {START_GAME ,CELL_SELECTED, WORD_SUBMIT} from '../constants/index';
-
+import axios from 'axios';
 //on start game which we may use later to distinguish games
 const startGame = (payload) => {
     return { type:START_GAME, payload}
@@ -14,6 +14,8 @@ const cellSelected = (payload) => {
 const submitWord = (payload) => {
     return { type:WORD_SUBMIT, payload}
 }
+
+
 
 export {
  startGame,
