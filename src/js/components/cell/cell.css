@@ -1,0 +1,18 @@
+.boggle-neighbour{
+    background-color: rgb(175, 201, 250);
+    color: white;
+}
+
+.boggle-neighbour:hover{
+ color: rgb(44, 42, 42);
+}
+
+.boggle-selected {
+    background-color: rgb(51, 240, 130);
+    color: rgb(229, 226, 226);
+}
+
+.boggle-selected:hover{
+    background-color: rgb(51, 240, 130);
+    color: rgb(44, 42, 42);
+}
