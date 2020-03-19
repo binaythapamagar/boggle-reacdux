@@ -1,6 +1,6 @@
 body {
   background-color: #ffffff;
-  font-family: Arial;
+  font-family: Sans-serif;
 }
 
 #boggle-container {
@@ -54,4 +54,12 @@ body {
 
 .score-board {
   height: 10%;
+}
+
+.timer{
+  margin: 0,auto; 
+}
+.timer > h3 {
+  color : rgb(140, 236, 140);
+  font-size : 50px;
 }

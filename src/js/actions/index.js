@@ -1,7 +1,11 @@
-import {START_GAME ,CELL_SELECTED, WORD_SUBMIT,TIMER} from '../constants/index';
+import {START_GAME ,CELL_SELECTED, WORD_SUBMIT,STOP_GAME} from '../constants/index';
 //on start game which we may use later to distinguish games
 const startGame = (payload) => {
     return { type:START_GAME, payload}
+}
+
+const stopGame = (payload) => {
+    return {type:STOP_GAME, payload}
 }
 
 //on any cell selected
@@ -14,13 +18,9 @@ const submitWord = (payload) => {
     return { type:WORD_SUBMIT, payload}
 }
 
-const timer = (payload) => {
-    return {type:TIMER, payload}
-}
-
 export {
  startGame,
  cellSelected,
  submitWord,
- timer
+ stopGame
 }

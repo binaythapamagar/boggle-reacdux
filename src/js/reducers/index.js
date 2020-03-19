@@ -1,6 +1,7 @@
-import { CELL_SELECTED,WORD_SUBMIT,TIMER} from "../constants";
+import { CELL_SELECTED,WORD_SUBMIT,STOP_GAME} from "../constants";
 
 const intialState = {
+    stopGame : false,
     boardCharacter : [
                             ['A','S','A','P'],
                             ['C','L','R','H'],
@@ -71,21 +72,24 @@ function rootReducer (state = intialState , action){
             });
         } 
     }
-    if(action.type === TIMER ){
-        console.log('time outhg');
-        clearInterval(this.interval)
-        this.timeout = new Date()*1 + state.timeLimit
-        this.interval = setInterval(() => {
-          if (new Date() > this.timeout) {
-            clearInterval(this.interval)
-            console.log('time out');
-            return Object.assign( {}, state, {
-                timeLimit : 0
-            });
-          }
-          console.log(this.timeout);
+    if(action.type === STOP_GAME ){
+        return Object.assign( {}, state, {
+           stopGame : true
+        });
+        // console.log('time outhg');
+        // clearInterval(this.interval)
+        // this.timeout = new Date()*1 + state.timeLimit
+        // this.interval = setInterval(() => {
+        //   if (new Date() > this.timeout) {
+        //     clearInterval(this.interval)
+        //     console.log('time out');
+        //     return Object.assign( {}, state, {
+        //         timeLimit : 0
+        //     });
+        //   }
+        //   console.log(this.timeout);
     
-        }, 1000)
+        // }, 1000)
     }
     return state;
 }

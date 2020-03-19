@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './form.css';
-import { submitWord,timer } from '../../actions/index';
+import { submitWord } from '../../actions/index';
 import { connect }  from 'react-redux';
 import axios from 'axios';
 
@@ -43,7 +43,6 @@ const mapDispatchToProps = (dispatch) => {
             .then(function(res){
                 res.data = {isValid:true,message:`${currentWord.currentWord} is a valid word`,currentWord:currentWord.currentWord}
                 dispatch(submitWord(res.data))
-                dispatch(timer(res.data))
             })
             .catch(function(res){
                 res.data = {isValid:false,message:`${currentWord.currentWord} is Not a valid word`,currentWord : currentWord.currentWord}
