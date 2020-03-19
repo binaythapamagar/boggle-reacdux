@@ -7,10 +7,6 @@ import { connect } from 'react-redux';
 
 class App extends Component{
 
-    handleSubmit = () => {
-
-    }
-
     render(){
         const {boardCharacter} = this.props 
         return(
@@ -23,7 +19,25 @@ class App extends Component{
             </div> 
             <div className="row"> 
                 <div className="col-md-4">
-
+                    <div className="score-board">
+                        <h3>Total Score : {this.props.score} </h3>
+                    </div>
+                    <div className="selected-words">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Words</th>
+                            <th scope="col">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.scoredWords.map((word,i)=>{
+                                return(<tr key={i}><td>{word}</td><td>{word.length}</td>
+                                </tr>)
+                            })}
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
                 <div className="col-md-4">
                     <div id="board">
@@ -64,7 +78,9 @@ const mapStateToProps = (state) =>{
     return {
         message : state.message,
         boardCharacter : state.boardCharacter,
-        currentWord : state.currentWord
+        currentWord : state.currentWord,
+        score : state.score,
+        scoredWords : state.scoredWords
     }
 }
 

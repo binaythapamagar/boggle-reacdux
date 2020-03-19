@@ -1,5 +1,4 @@
-import {START_GAME ,CELL_SELECTED, WORD_SUBMIT} from '../constants/index';
-import axios from 'axios';
+import {START_GAME ,CELL_SELECTED, WORD_SUBMIT,TIMER} from '../constants/index';
 //on start game which we may use later to distinguish games
 const startGame = (payload) => {
     return { type:START_GAME, payload}
@@ -15,10 +14,13 @@ const submitWord = (payload) => {
     return { type:WORD_SUBMIT, payload}
 }
 
-
+const timer = (payload) => {
+    return {type:TIMER, payload}
+}
 
 export {
  startGame,
  cellSelected,
- submitWord   
+ submitWord,
+ timer
 }

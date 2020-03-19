@@ -1,5 +1,5 @@
-import { CELL_SELECTED,WORD_SUBMIT } from "../constants";
-import axios from 'axios';
+import { CELL_SELECTED,WORD_SUBMIT,TIMER} from "../constants";
+
 const intialState = {
     boardCharacter : [
                             ['A','S','A','P'],
@@ -14,7 +14,7 @@ const intialState = {
     selectedCell : [],
     currentNeighbourCell : [],
     message : undefined,
-    timeLimit : 180
+    timeLimit : 5000
 }
 
 function rootReducer (state = intialState , action){
@@ -57,6 +57,7 @@ function rootReducer (state = intialState , action){
                 currentNeighbourCell : [],
                 currentCell : null,
                 selectedCell : [],
+                score : state.score + parseInt(action.payload.currentWord.length),
                 message :action.payload.message,
                 scoredWords : [...state.scoredWords,action.payload.currentWord]
             });
@@ -69,6 +70,22 @@ function rootReducer (state = intialState , action){
                 selectedCell : []
             });
         } 
+    }
+    if(action.type === TIMER ){
+        console.log('time outhg');
+        clearInterval(this.interval)
+        this.timeout = new Date()*1 + state.timeLimit
+        this.interval = setInterval(() => {
+          if (new Date() > this.timeout) {
+            clearInterval(this.interval)
+            console.log('time out');
+            return Object.assign( {}, state, {
+                timeLimit : 0
+            });
+          }
+          console.log(this.timeout);
+    
+        }, 1000)
     }
     return state;
 }

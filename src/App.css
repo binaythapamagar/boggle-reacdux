@@ -51,3 +51,7 @@ body {
  top: 50%;
  transform: translateY(-50%);
 }
+
+.score-board {
+  height: 10%;
+}
