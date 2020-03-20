@@ -106,7 +106,7 @@ class App extends Component{
                     </div>
                 </div> 
                 <div className="col-md-4">
-                        <div className="timer"><h4>Time Remaining :</h4><h3>{this.state.timer}</h3></div>
+                        <div className="timer"><h4>Time Remaining :</h4><h3>{this.state.timer} sec</h3></div>
                 </div>
             </div>
             </>
