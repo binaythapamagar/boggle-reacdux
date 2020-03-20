@@ -1,4 +1,4 @@
-import { CELL_SELECTED,WORD_SUBMIT,STOP_GAME} from "../constants";
+import { CELL_SELECTED,WORD_SUBMIT,STOP_GAME, START_GAME} from "../constants";
 
 const intialState = {
     stopGame : false,
@@ -19,6 +19,11 @@ const intialState = {
 }
 
 function rootReducer (state = intialState , action){
+    if(action.type == START_GAME){
+        return Object.assign( {}, state, {
+            boardCharacter : action.payload
+        });
+    }
     if(action.type === CELL_SELECTED){
         var cellRow = parseInt(action.payload.id / 10);
         var cellColumn = action.payload.id % 10;
@@ -53,6 +58,7 @@ function rootReducer (state = intialState , action){
     }
     if(action.type === WORD_SUBMIT){ 
         if(action.payload.isValid){
+            console.log(action.payload)
              return Object.assign( {}, state, {
                 currentWord: '',
                 currentNeighbourCell : [],

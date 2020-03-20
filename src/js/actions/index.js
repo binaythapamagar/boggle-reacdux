@@ -1,6 +1,8 @@
 import {START_GAME ,CELL_SELECTED, WORD_SUBMIT,STOP_GAME} from '../constants/index';
 //on start game which we may use later to distinguish games
 const startGame = (payload) => {
+    //api
+    console.log(payload)
     return { type:START_GAME, payload}
 }
 

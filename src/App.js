@@ -3,8 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cell from './js/components/cell/cell'; 
 import Form from './js/components/form/form';
-import { stopGame } from './js/actions/index';
+import { stopGame, startGame } from './js/actions/index';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class App extends Component{
 
@@ -16,6 +17,19 @@ class App extends Component{
     }
     handleStopGame(){
         this.props.stopGame(true)
+    }
+    getWords(){
+        axios.get('http://localhost:3000/word',{
+                headers: {
+                'Content-Type': 'application/json'
+                }
+              })
+            .then(function(res){ 
+                this.props.startGame(res.data)
+            })
+            .catch(function(res){
+                 
+            })
     }
     counter(){
         var time = 180 
@@ -32,6 +46,7 @@ class App extends Component{
 
     }
     componentDidMount(){
+        this.getWords()
         this.counter()
     }
     componentWillUpdate(nextProps, nextState) {

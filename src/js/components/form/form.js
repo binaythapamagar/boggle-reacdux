@@ -40,9 +40,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         submitWord : (currentWord)=>{
-            axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(function(res){
-                res.data = {isValid:true,message:`${currentWord.currentWord} is a valid word`,currentWord:currentWord.currentWord}
+            axios.get('http://localhost:3000/validate-word',{
+                headers: {
+                'Content-Type': 'application/json'
+                }
+              })
+            .then(function(res){ 
+                res.data = {isValid:res.data.isValid,message:`${currentWord.currentWord} ${res.data.message}`,currentWord:currentWord.currentWord}
                 dispatch(submitWord(res.data))
             })
             .catch(function(res){
