@@ -11,23 +11,25 @@ class App extends Component{
     constructor(props){
         super(props);
         this.state = {
-            timer : 0, 
+            timer : 180, 
         }
     }
     handleStopGame(){
         this.props.stopGame(true)
     }
     counter(){
-        var time = 0
-        setInterval(()=> {
+        var time = 10 
+        var gameTimer = setInterval(()=> { 
             this.setState({
                 timer : time
-            })
-            if(this.state.timer === 180){
+            }) 
+            if(this.state.timer === 0){
                 this.props.stopGame(true)
+                clearInterval(gameTimer);
             }
-            time++;
+            time--;
         }, 1000);
+
     }
     componentDidMount(){
         this.counter()

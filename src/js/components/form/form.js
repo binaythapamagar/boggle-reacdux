@@ -22,7 +22,7 @@ class Form extends Component {
                 </div>
                 <div className="col-md-4">
                     <button className="btn btn-primary" onClick={this.handleSubmit} 
-                            disabled={(this.props.currentWord.length < 3 || this.props.timeLimit <= 0) ? true:false} 
+                            disabled={(this.props.currentWord.length < 3 || this.props.timeLimit <= 0 || this.props.stopGame) ? true:false} 
                             >Submit</button>
                 </div>
             </div>
@@ -33,7 +33,8 @@ class Form extends Component {
 const mapStateToProps = (state) => {
     return {
         currentWord : state.currentWord,
-        timeLimit : state.timeLimit
+        timeLimit : state.timeLimit,
+        stopGame : state.stopGame
     };
 }
 const mapDispatchToProps = (dispatch) => {

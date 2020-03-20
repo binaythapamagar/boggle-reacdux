@@ -6,7 +6,9 @@ import { cellSelected } from "../../actions/index";
 class Cell extends Component {
     
     handleCellClicked = () => {
-        this.props.cellClicked({id:this.props.character.id,character:this.props.character.text})
+        if(!this.props.stopGame){
+            this.props.cellClicked({id:this.props.character.id,character:this.props.character.text})
+        }
     }
 
     render(){
@@ -24,7 +26,8 @@ const mapStateToProps = (state) => {
     return {
         currentNeighbourCell : state.currentNeighbourCell,
         selectedCell : state.selectedCell,
-        currentCell : state.currentCell
+        currentCell : state.currentCell,
+        stopGame : state.stopGame
     };
 }
 const mapDispatchToProps = (dispatch) => {
