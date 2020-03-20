@@ -18,7 +18,7 @@ class App extends Component{
         this.props.stopGame(true)
     }
     counter(){
-        var time = 10 
+        var time = 180 
         var gameTimer = setInterval(()=> { 
             this.setState({
                 timer : time
