@@ -19,7 +19,7 @@ const intialState = {
 }
 
 function rootReducer (state = intialState , action){
-    if(action.type == START_GAME){
+    if(action.type === START_GAME){
         return Object.assign( {}, state, {
             boardCharacter : action.payload
         });
@@ -82,20 +82,6 @@ function rootReducer (state = intialState , action){
         return Object.assign( {}, state, {
            stopGame : true
         });
-        // console.log('time outhg');
-        // clearInterval(this.interval)
-        // this.timeout = new Date()*1 + state.timeLimit
-        // this.interval = setInterval(() => {
-        //   if (new Date() > this.timeout) {
-        //     clearInterval(this.interval)
-        //     console.log('time out');
-        //     return Object.assign( {}, state, {
-        //         timeLimit : 0
-        //     });
-        //   }
-        //   console.log(this.timeout);
-    
-        // }, 1000)
     }
     return state;
 }

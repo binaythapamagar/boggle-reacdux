@@ -40,9 +40,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         submitWord : (currentWord)=>{
-            axios.get('http://localhost:3000/validate-word',{
+            axios.post('http://localhost:3000/validate-word',{
                 headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
+                },
+                body:{
+                    word:currentWord.currentWord
                 }
               })
             .then(function(res){ 

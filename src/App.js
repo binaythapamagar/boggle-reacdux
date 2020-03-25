@@ -18,19 +18,6 @@ class App extends Component{
     handleStopGame(){
         this.props.stopGame(true)
     }
-    getWords(){
-        axios.get('http://localhost:3000/word',{
-                headers: {
-                'Content-Type': 'application/json'
-                }
-              })
-            .then(function(res){ 
-                this.props.startGame(res.data)
-            })
-            .catch(function(res){
-                 
-            })
-    }
     counter(){
         var time = 180 
         var gameTimer = setInterval(()=> { 
@@ -46,11 +33,11 @@ class App extends Component{
 
     }
     componentDidMount(){
-        this.getWords()
+        this.props.startGame()
         this.counter()
     }
     componentWillUpdate(nextProps, nextState) {
-        if (nextState.open == true && this.state.open == false) {
+        if (nextState.open === true && this.state.open === false) {
           this.setState({
               timer:120
           })
@@ -141,7 +128,19 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        stopGame : () =>{
+        startGame : async () => {
+            axios.get('http://localhost:3000/word',{
+                headers: {
+                'Content-Type': 'application/json'
+                }
+                })
+            .then(function(res){ 
+                dispatch(startGame(res.data))
+            })
+            .catch(function(res){
+            })
+        },
+        stopGame : async () =>{
             dispatch(stopGame(true))
         }
     }
